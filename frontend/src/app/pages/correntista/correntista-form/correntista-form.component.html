@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-6">Correntistas</h1>
+    <p class="lead-1">Cadastro de correntista</p>
+    <hr class="my-2">
+
+    <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+      <div class="col-md-3">
+        <input  class="form-control" id="iCpf" formControlName="cpf"  placeholder="CPF">
+      </div>
+      <div class="col-5">
+        <input type="text"  class="form-control" id="iNome" formControlName="nome" placeholder="Nome do Correntista">
+      </div>
+
+      <div class="col-3">
+        <div class="d-grid gap-1 d-md-flex ">
+          <button class="btn btn-primary me-md-1" type="submit">Gravar</button>
+          <button routerLink="/correntistas" class="btn btn-danger">Voltar</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

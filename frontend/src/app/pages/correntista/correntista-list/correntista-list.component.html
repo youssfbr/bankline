@@ -1,0 +1,38 @@
+<div class="col-3">
+  <div class="d-grid gap-1 d-md-flex">
+    <button class="btn btn-primary me-md-2" routerLink="/correntista-new" tooltip="Novo Correntista">Novo Correntista</button>
+
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover align-middle">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Correntista</th>
+        <th scope="col">Conta</th>
+        <th scope="col">Saldo</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="correntistas && correntistas?.length">
+      <tr *ngFor="let item of correntistas; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.cpf }}</td>
+        <td>{{ item.nome  }}</td>
+        <td>{{ item.conta.numero }}</td>
+        <td [ngStyle]="{'color':item.conta.saldo > 0 ? 'blue' : 'red'}">{{ item.conta.saldo | currency:'BRL' }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!correntistas?.length">
+      <tr>
+        <td colspan="7" class="text-center text-secondary">
+          <h6>Nenhum correntista encontrado.</h6>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -1,1 +1,49 @@
-<p>movimentacao-form works!</p>
+
+<div class="container">
+    <div class="jumbotron">
+      <h1 class="display-6">{{ name }}</h1>
+      <p></p>
+      <hr class="my-2">
+
+      <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+          <div class="col-md-3 ">
+            <label for="iData" class="text-secondary form-label">Data</label>
+            <input type="date" class="form-control" id="iData" formControlName="dataHora" />
+          </div>
+          <div class="col-md-9">
+            <label for="iCorrentista" class="form-label">Correntista</label>
+            <select class="form-select"  id="iCorrentista" formControlName="contaId">
+              <option *ngFor="let c of correntistas" [ngValue]="c.id">{{c.cpf}} - {{c.nome}}</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="iDescricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="iDescricao" formControlName="descricao" placeholder="Informe uma descrição">
+          </div>
+
+          <div class="col-md-3">
+            <label for="iTipo" class="form-label">Tipo Movimentação</label>
+            <select id="iTipo" class="form-select" formControlName="tipo">
+              <option selected>RECEITA</option>
+              <option>DESPESA</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="iValor" class="form-label">R$ Valor</label>
+            <input currencyMask type="text" class="form-control" id="iValor" formControlName="valor" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+          </div>
+          <div class="col-md-6 "></div>
+
+          <div class="d-grid gap-2 d-md-flex">
+            <button class="btn btn-primary me-md-2" type="submit">Confirmar</button>
+            <button routerLink="/movimentacoes" class="btn btn-outline-secondary ">Cancelar</button>
+          </div>
+
+      </form>
+      </div>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+
