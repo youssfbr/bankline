@@ -21,7 +21,11 @@ public class Movimentacao {
     private String descricao;
     private Double valor;
 
+    @Column(length = 10)
     @Enumerated(EnumType.STRING)
     private MovimentacaoTipo tipo;
+
+    @ManyToOne
+    private Correntista correntista;
 
 }
